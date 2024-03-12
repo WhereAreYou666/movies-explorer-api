@@ -14,7 +14,7 @@ const auth = require('./middlewares/auth');
 const NotFoundError = require('./errors/NotFoundError');
 const { MONGO_DB_URL, limiter } = require('./utils/config');
 
-const { PORT = 3000, DB_URL = MONGO_DB_URL } = process.env;
+const { PORT = 3001, DB_URL = MONGO_DB_URL } = process.env;
 
 const app = express();
 
