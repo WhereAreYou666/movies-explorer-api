@@ -36,7 +36,7 @@ module.exports.createMovie = (req, res, next) => {
     .then((card) => res.status(201).send(card))
     .catch((err) => {
       if (err.name === 'ValidationError') {
-        next(new InputError('переданы некорректные данные в методы создания карточки'));
+        next(new InputError('Переданы некорректные данные в методы создания карточки'));
       } else {
         next(err);
       }
@@ -51,7 +51,7 @@ module.exports.deleteMovie = (req, res, next) => {
     .orFail(() => new NotFoundError('Карточка с указанным id не существует'))
     .then((card) => {
       if (userId !== card.owner._id.toString()) {
-        throw new AuthNotFoundError('карточка не принадлежит пользователю');
+        throw new AuthNotFoundError('Карточка не принадлежит пользователю');
       } else {
         Movie.findByIdAndRemove(cardId)
           .orFail(() => new NotFoundError('Карточка с указанным id не существует'))
